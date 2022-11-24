@@ -1,0 +1,24 @@
+#include <iostream>
+using namespace std;
+void Print(int i)
+{
+	
+	if (i >= 51)
+	{
+		return;
+	}
+	else
+	{
+		cout << i << endl;
+		i++; 
+		Print(i);
+	}
+}
+int main()
+{
+	cout << "Input the date range starting from 1: ";
+	int range=0;
+	cin >> range;
+	system("pause");
+	return 0;
+}
