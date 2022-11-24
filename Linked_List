@@ -1,0 +1,111 @@
+#include <iostream>
+using namespace std;
+class LinkedList
+{
+public:
+	class Node
+	{
+	public:
+		int data;
+		Node* next;
+		Node()
+		{
+			data = 0;
+			next = nullptr;
+		}
+	};
+	Node* head;
+	Node* tail;
+	LinkedList()
+	{
+		head = tail = nullptr;
+	}
+	void Insert(int value)
+	{
+		Node* newnode = new Node();
+		newnode->data = value;
+		
+		if (head == nullptr)
+		{
+			head = tail = newnode;
+		}
+		else
+		{
+			tail->next = newnode;
+			tail = newnode;
+		}
+	}
+	void Insertathead(int value)
+	{
+		Node* newnode = new Node();
+		newnode->data = value;
+		if (head == nullptr)
+		{
+			head = tail = nullptr;
+		}
+		else
+		{
+			newnode->next = head;
+			head = newnode;
+		}
+	}
+	void Print()
+	{
+		Node* curr = head;
+		while (curr != nullptr)
+		{
+			cout << curr->data << " -> ";
+			curr = curr->next;
+		}
+	}
+	int NodeCounter()
+	{
+		Node* curr = head;
+		int count = 0;
+		while (curr != nullptr)
+		{
+			count++;
+			curr = curr->next;
+		}
+		return count;
+	}
+	Node* gettail()
+	{
+		return tail;
+	}
+	Node* gethead()
+	{
+		return head;
+	}
+};
+int main()
+{
+	int size = 0;
+	cout << "How many Nodes of Data you want to enter: ";
+	cin >> size;
+	LinkedList obj;
+	int data;
+	for (int i = 0; i < size; i++)
+	{
+		cout << "Enter data for Node " << i + 1 << " :";
+		cin >> data;
+		obj.Insert(data);
+	}
+	cout << "Data stored in Linked list is: ";
+	obj.Print();
+	cout << endl;
+	cout << "Total Number of Nodes in list are: " << obj.NodeCounter();
+	cout << endl;
+	cout << "How many elements you wat to enter at head: ";
+	cin >> size;
+	for (int i = 0; i < size; i++)
+	{
+		cout << "Enter data to enter at head: ";
+		cin >> data;
+		obj.Insertathead(data);
+	}
+	obj.Print();
+
+	system("pause");
+	return 0;
+}
